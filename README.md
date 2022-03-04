@@ -24,6 +24,24 @@ Tiếp theo, chúng ta có thư mục các tuyến đường sẽ có một tệ
 
 Sau đó, thư mục mô hình sẽ có các mô hình dữ liệu cần thiết cho ứng dụng. Điều này cũng sẽ phụ thuộc vào kho dữ liệu được sử dụng nếu đó là cơ sở dữ liệu quan hệ hay phi quan hệ (NoSQL). Nội dung của thư mục này cũng sẽ được xác định bằng cách sử dụng thư viện Ánh xạ quan hệ đối tượng (ORM). Nếu sử dụng ORM như Sequelize hoặc Prisma, thư mục này sẽ có các mô hình dữ liệu được xác định theo yêu cầu của nó.
 
+
+Nguyên Tắc Cơ Bản Khi Làm Việc Nhóm Với Git
+1. Luôn tạo branch mới
+Luôn bắt đầu một task bằng một branch mới được tách từ một trong các branch chính được cập nhật mới nhất (master / develop / stable)
+Tên của branch mới có thể sử dụng task id trong hệ thống quản lý task hoặc mô tả ngắn gọn (features/user_registration_api)
+2. Tuân thủ nguyên tắc đặt tên commit message
+Chi tiết xem tại bài viết trước
+3. Commit / review sớm và thường xuyên
+Nhằm giữ branch feature và branch chính gần nhau nhất có thể, việc này giúp:
+Cập nhật tình hình phát triển của dự án
+Giữ thành viên trong team luôn ở phiên bản mới nhất của branch chính
+Giảm xung đột khi tiến hành merge branch
+4. Mỗi commit chỉ thực hiện một nhiệm vụ
+Rule này vô cùng quan trọng khi review / debug code. Thực hiện nhiều nhiệm vụ trong cùng một commit sẽ gây rất nhiều khó khăn cho các thành viên còn lại trong team để hiểu về commit đó.
+Ví dụ: Commit “CPS-123: Add shopping cart api “ có sửa đổi cả file template.html hay .gitignore là một commit không đúng chuẩn.
+Tip: Tuân thủ quy tắc đặt tên commit message với danh sách động từ (Add / Drop / Fix / Bump / Make / Refactor / Optimize / Reformat / Repharse / Document) là cách đơn giản để nhắc nhở bản thân luôn.
+5. Không commit file không liên quan
+Một trong các lỗi phổ biến nhất của lập trình viên là commit rất nhiều file không liên đến dự án. Ví dụ như file cấu hình được khởi tạo bởi IDE hay file test sinh ra trong quá trình lập trình chức năng.
 Do đó, thư mục dịch vụ sẽ bao gồm tất cả logic nghiệp vụ. Nó có thể có các dịch vụ đại diện cho các đối tượng nghiệp vụ và có thể chạy các truy vấn trên cơ sở dữ liệu. Tùy thuộc vào nhu cầu, ngay cả các dịch vụ chung như cơ sở dữ liệu cũng có thể được đặt ở đây.
 
 Cuối cùng nhưng không kém phần quan trọng, chúng tôi có thư mục utils sẽ có tất cả các tiện ích và trợ giúp cần thiết cho ứng dụng. Nó cũng sẽ hoạt động như một nơi để đặt logic được chia sẻ, nếu có. Ví dụ, một trình trợ giúp đơn giản để tính toán bù đắp cho một truy vấn SQL được phân trang có thể được đặt trong tệp helper.util.js trong thư mục này.
