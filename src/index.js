@@ -4,15 +4,17 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import couponRoutes from "./routes/Coupon.js";
+import userRoutes from "./routes/User.js";
+
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.use("/", (req, res) => {
-  res.json({ appName: "Sneaker Shop" });
-});
+app.use("/coupon", couponRoutes);
+app.use("/user", userRoutes);
 
 dotenv.config();
 
