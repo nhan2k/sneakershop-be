@@ -2,19 +2,25 @@ import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
   {
-    avatar: { type: String },
-    name: { type: String },
+    avatar: { type: String, default: "" },
+    firstName: { type: String, minlength: 2 },
+    lastName: { type: String, minlength: 2 },
     phone: { type: String, unique: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    email: {
+      type: String,
+      required: true,
+      minlength: 12,
+      unique: true,
+    },
+    password: { type: String, required: true, minlength: 8 },
     orderList: [
       {
-        orderId: { type: String },
-        time: { type: Date },
-        shippingAdress: { type: String },
-        method: { type: String },
-        amount: { type: Number },
-        status: { type: String },
+        orderId: { type: String, default: "" },
+        time: { type: Date, default: "" },
+        shippingAdress: { type: String, default: "" },
+        method: { type: String, default: "" },
+        amount: { type: Number, default: "" },
+        status: { type: String, default: "" },
       },
       { default: [] },
     ],

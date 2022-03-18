@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 
 const couponSchema = new mongoose.Schema(
   {
-    index: { type: String },
-    name: { type: String },
-    code: { type: String },
+    index: { type: String, minlength: 4 },
+    name: { type: String, minlength: 4 },
+    code: { type: String, minlength: 4 },
     validityTime: { type: Date },
-    percentage: { type: Number },
-    minAmount: { type: Number },
-    type: { type: String },
+    percentage: { type: Number, min: 1 },
+    minAmount: { type: Number, min: 10000 },
+    type: { type: String, minlength: 4 },
   },
   { timestamps: true }
 );

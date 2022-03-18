@@ -27,14 +27,15 @@ export const getCoupon = async (req, res) => {
 
 // CREATE COUPON
 export const postCoupon = async (req, res) => {
-  const { index, name, code, validityTime, percentage, minAmount, type } =
-    req.body;
+  let time = new Date();
+  time.setDate(time.getDate() + req.body.validityTime);
+  const { index, name, code, percentage, minAmount, type } = req.body;
 
   const newCoupon = new Coupon({
     index,
     name,
     code,
-    validityTime,
+    validityTime: time,
     percentage,
     minAmount,
     type,

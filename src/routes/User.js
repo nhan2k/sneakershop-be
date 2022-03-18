@@ -6,16 +6,13 @@ import {
   updateAdmin,
 } from "../controllers/User.js";
 import { registerUser, login } from "../controllers/auth.js";
-import {
-  verifyToken,
-  verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
-} from "../middlewares/verifyToken.js";
+import { verifyTokenAndAdmin } from "../middlewares/verifyToken.js";
+import { registerValidate, loginValidate } from "../middlewares/User.js";
 
 const router = express.Router();
 
 // GET ALL Users
-router.get("/", verifyTokenAndAuthorization, getUsers);
+router.get("/", verifyTokenAndAdmin, getUsers);
 
 // GET ONE User
 router.get("/:id", verifyTokenAndAdmin, getUser);
@@ -24,10 +21,10 @@ router.get("/:id", verifyTokenAndAdmin, getUser);
 router.patch("/update/:id", verifyTokenAndAdmin, updateAdmin);
 
 // Register User
-router.post("/register", registerUser);
+router.post("/register", registerValidate, registerUser);
 
 // LOGIN
-router.post("/login", login);
+router.post("/login", loginValidate, login);
 
 // DELETE User
 router.delete("/:id", verifyTokenAndAdmin, deleteUser);

@@ -5,6 +5,9 @@ import jwt from "jsonwebtoken";
 // REGISTER
 export const registerUser = async (req, res) => {
   const newUser = new User({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    phone: req.body.phone,
     email: req.body.email,
     password: CryptoJS.AES.encrypt(
       req.body.password,
