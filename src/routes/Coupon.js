@@ -22,7 +22,7 @@ router.get("/:id", verifyTokenAndAdmin, getCoupon);
 router.post("/", endDateCheck, verifyTokenAndAdmin, postCoupon);
 
 // UPDATE COUPON
-router.patch("/:id", verifyTokenAndAdmin, putCoupon);
+router.patch("/:id", endDateCheck, verifyTokenAndAdmin, putCoupon);
 
 // UPDATE COUPON
 router.delete("/:id", verifyTokenAndAdmin, deleteCoupon);
