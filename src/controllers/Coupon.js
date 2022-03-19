@@ -5,8 +5,8 @@ import Coupon from "../models/Coupon.js";
 export const getCoupons = async (req, res) => {
   try {
     const coupons = await Coupon.find();
-
-    res.status(200).json(coupons);
+    const arr = [...coupons];
+    res.status(200).json(arr);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
