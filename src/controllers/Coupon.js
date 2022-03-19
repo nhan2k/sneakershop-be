@@ -29,6 +29,7 @@ export const getCoupon = async (req, res) => {
 export const postCoupon = async (req, res) => {
   let time = new Date();
   time.setDate(time.getDate() + req.body.validityTime);
+  time.toDateString();
   const { index, name, code, percentage, minAmount, type } = req.body;
 
   const newCoupon = new Coupon({

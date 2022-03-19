@@ -61,3 +61,25 @@ export const deleteUser = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+export const addOrder = async (req, res) => {
+  const { id } = req.params;
+  const { orderId, shippingAdress, method, amount, status } = req.body;
+
+  const newOrder = {
+    orderId,
+    shippingAdress,
+    method,
+    amount,
+    status,
+  };
+  try {
+    const user = await User.findById(id);
+    await user["orderList"].unshift(newOrder);
+    await user.save();
+
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};

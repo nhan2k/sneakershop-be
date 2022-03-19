@@ -15,14 +15,13 @@ const UserSchema = new mongoose.Schema(
     password: { type: String, required: true, minlength: 8 },
     orderList: [
       {
-        orderId: { type: String, default: "" },
-        time: { type: Date, default: "" },
-        shippingAdress: { type: String, default: "" },
-        method: { type: String, default: "" },
-        amount: { type: Number, default: "" },
-        status: { type: String, default: "" },
+        orderId: { type: String, minlength: 4 },
+        time: { type: Date, default: Date.now },
+        shippingAdress: { type: String, minlength: 4 },
+        method: { type: String, default: ["Cash"] },
+        amount: { type: Number, min: 1000 },
+        status: { type: String, default: ["Delivery"] },
       },
-      { default: [] },
     ],
     isAdmin: {
       type: Boolean,

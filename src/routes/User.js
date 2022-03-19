@@ -4,6 +4,7 @@ import {
   deleteUser,
   getUser,
   updateAdmin,
+  addOrder,
 } from "../controllers/User.js";
 import { registerUser, login } from "../controllers/auth.js";
 import { verifyTokenAndAdmin } from "../middlewares/verifyToken.js";
@@ -25,6 +26,9 @@ router.post("/register", registerValidate, registerUser);
 
 // LOGIN
 router.post("/login", loginValidate, login);
+
+// Add Order to User
+router.post("/order/:id", addOrder);
 
 // DELETE User
 router.delete("/:id", verifyTokenAndAdmin, deleteUser);
