@@ -33,6 +33,7 @@ export const login = async (req, res) => {
       user.password,
       process.env.PASS_SEC
     );
+    const admin = user.isAdmin || false;
     const OriginalPassword = hashPassword.toString(CryptoJS.enc.Utf8);
 
     OriginalPassword !== req.body.password &&

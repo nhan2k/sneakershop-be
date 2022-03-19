@@ -13,10 +13,10 @@ import { endDateCheck } from "../middlewares/Coupon.js";
 const router = express.Router();
 
 // GET ALL COUPONS
-router.get("/", verifyTokenAndAdmin, getCoupons);
+router.get("/", getCoupons);
 
 // GET ONE COUPON
-router.get("/:id", verifyTokenAndAdmin, getCoupon);
+router.get("/:id", getCoupon);
 
 // ADD COUPON
 router.post("/", endDateCheck, verifyTokenAndAdmin, postCoupon);
