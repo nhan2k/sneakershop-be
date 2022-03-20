@@ -5,11 +5,7 @@ const productSchema = new mongoose.Schema(
   {
     sku: { type: String },
     name: { type: String, required: true, unique: true },
-    price: {
-      base: { type: Number },
-      current: { type: Number },
-      discount: { type: Number },
-    },
+    price: { type: Number },
     slug: { type: String, slug: "name", unique: true },
     option: {
       color: [{ type: String }],
@@ -17,10 +13,10 @@ const productSchema = new mongoose.Schema(
     },
     gender: { type: Boolean },
     description: { type: String, maxLength: 600 },
-    category: Category._id,
+    category: { type: String },
     stock: { type: Number },
-    status: { type: Boolean },
-    published: { type: Boolean },
+    status: { type: String, default: true },
+    published: { type: Boolean, default: true },
     image: { type: String },
     country: { type: String },
   },

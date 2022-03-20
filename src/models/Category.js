@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const categorySchema = new mongoose.Schema(
   {
     type: { type: String },
-    published: { type: Boolean },
+    published: { type: Boolean, default: true },
   },
   {
     timestamps: true,

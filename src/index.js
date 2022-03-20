@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 
 import couponRoutes from "./routes/Coupon.js";
 import userRoutes from "./routes/User.js";
+import productRoutes from "./routes/Product.js";
+import categoryRoutes from "./routes/Category.js";
+import orderRoutes from "./routes/Order.js";
 
 const app = express();
 
@@ -15,6 +18,9 @@ app.use(cors());
 
 app.use("/coupon", couponRoutes);
 app.use("/user", userRoutes);
+app.use("/product", productRoutes);
+app.use("/category", categoryRoutes);
+app.use("/order", orderRoutes);
 
 dotenv.config();
 
