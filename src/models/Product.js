@@ -3,7 +3,7 @@ import slug from "mongoose-slug-generator";
 
 const productSchema = new mongoose.Schema(
   {
-    sku: { type: String },
+    sku: { type: String, unique: true },
     name: { type: String, required: true, unique: true },
     price: { type: Number },
     slug: { type: String, slug: "name", unique: true },
@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema(
     stock: { type: Number },
     status: { type: String, default: true },
     published: { type: Boolean, default: true },
-    image: { type: String },
+    image: { type: String, unique: true },
     country: { type: String },
   },
   { timestamps: true }
