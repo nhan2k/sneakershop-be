@@ -6,6 +6,7 @@ import {
   addOrder,
   updateOrder,
   deleteOrder,
+  addInvoice,
 } from "../controllers/Order.js";
 import { verifyTokenAndAuthorization } from "../middlewares/verifyToken.js";
 
@@ -19,6 +20,9 @@ router.get("/:id", getOrder);
 
 // ADD Order
 router.post("/", verifyTokenAndAuthorization, addOrder);
+
+// ADD Invoice
+router.post("/invoice/:id", addInvoice);
 
 // UPDATE Order
 router.patch("/:id", verifyTokenAndAuthorization, updateOrder);
