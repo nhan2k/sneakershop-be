@@ -53,10 +53,7 @@ export const postCoupon = async (req, res) => {
 // UPDATE COUPON
 export const putCoupon = async (req, res) => {
   const { id } = req.params;
-  if (req.body.validityTime) {
-    var time = new Date();
-    time.setDate(time.getDate() + req.body.validityTime);
-  }
+
   const { name, code, percentage, minAmount, type } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
@@ -65,7 +62,6 @@ export const putCoupon = async (req, res) => {
   const updateCoupon = {
     name,
     code,
-    validityTime: time,
     percentage,
     minAmount,
     type,
